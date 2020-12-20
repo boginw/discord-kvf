@@ -1,7 +1,7 @@
 <center>
 <h1>
   <br>
-  <a href="https://discord.com/api/oauth2/authorize?client_id=789912679010795581&permissions=3155968&scope=bot"><img src="https://raw.githubusercontent.com/boginw/discord-kvf/main/assets/kvf-bot-discord-png" alt="DISCORD-KVF" width="200"></a>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=789912679010795581&permissions=3155968&scope=bot"><img src="https://raw.githubusercontent.com/boginw/discord-kvf/main/assets/kvf-bot-discord.png" alt="DISCORD-KVF" width="200"></a>
   <br>
   DISCORD-KVF
   <br>
