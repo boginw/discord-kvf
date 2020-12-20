@@ -1,5 +1,5 @@
 <center>
-<h1>
+<h1 align="center">
   <br>
   <a href="https://discord.com/api/oauth2/authorize?client_id=789912679010795581&permissions=3155968&scope=bot"><img src="https://raw.githubusercontent.com/boginw/discord-kvf/main/assets/kvf-bot-discord.png" alt="DISCORD-KVF" width="200"></a>
   <br>
@@ -7,14 +7,13 @@
   <br>
 </h1>
 
-Fá Útvarpið á tín Discord ambætara! <a href="https://discord.com/api/oauth2/authorize?client_id=789912679010795581&permissions=3155968&scope=bot">Trýst her! 👍</a>
+<p align="center">Fá Útvarpið á tín Discord ambætara! <a href="https://discord.com/api/oauth2/authorize?client_id=789912679010795581&permissions=3155968&scope=bot">Trýst her! 👍</a></p>
 
-<p>
+<p align="center">
   <a href="#Nýtsla">Nýtsla</a> •
   <a href="#Sjálvhýsan">Sjálvhýsan</a>
 </p>
 </center>
-
 
 ## Nýtsla
 
