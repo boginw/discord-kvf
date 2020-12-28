@@ -30,6 +30,7 @@
 
 * [Node](https://nodejs.org/en/)
 * [NPM](https://www.npmjs.com/get-npm)
+* [FFMPEG](https://ffmpeg.org/download.html)
 
 Vit kunnu halda á framm við uppsetanini eftir innlegging av niðanfyristandandi tólum.
 
