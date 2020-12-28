@@ -27,6 +27,21 @@ client.once('disconnect', () => {
     console.log('Disconnect!');
 });
 
+client.on('voiceStateUpdate', (oldState, newState) => {
+    if (oldState.member.user.bot) return;
+
+    const guild = client.guildInstances.get(newState.guild.id);
+
+    if (!guild || !guild.connection || !guild.connection.dispatcher) return;
+
+    let isAlone = guild.voiceChannel.members.size == 1;
+
+    if (isAlone) {
+        guild.connection.dispatcher.end();
+        guild.voiceChannel.leave();
+    }
+});
+
 client.on('message', async message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
