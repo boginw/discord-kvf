@@ -16,7 +16,13 @@ module.exports = {
                 return message.channel.send("I need the permissions to join and speak in your voice channel!");
             }
 
-            const channel = message.content.slice(prefix.length+4).split(/ +/)[1].toLowerCase();
+            let channel = message.content.slice(prefix.length+4).split(/ +/);
+
+            if (channel.length >= 2) {
+                channel = channel[1].toLowerCase();
+            } else {
+                channel = channel[0];
+            }
 
             let channelUrl = "";
 
