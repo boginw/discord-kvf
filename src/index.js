@@ -2,7 +2,7 @@ const fs = require('fs')
 const Discord = require('discord.js');
 const Client = require('./client');
 const { prefix } = require('../config.json');
-const token = fs.readFileSync("./token", "utf8");
+const token = fs.readFileSync("./token", "utf8").trim();
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 const client = new Client();
 
