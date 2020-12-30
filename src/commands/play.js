@@ -18,7 +18,7 @@ module.exports = {
 
             let channel = message.content.slice(prefix.length+4).split(/ +/);
 
-            if (channel.length > 1) {
+            if (channel.length >= 2) {
                 channel = channel[1].toLowerCase();
             } else {
                 channel = channel[0];
