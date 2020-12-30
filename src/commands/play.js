@@ -1,3 +1,5 @@
+const { prefix } = require('../../config.json');
+
 module.exports = {
     name: "play",
     description: "Play KVF in your channel!",
@@ -14,10 +16,23 @@ module.exports = {
                 return message.channel.send("I need the permissions to join and speak in your voice channel!");
             }
 
+            const channel = message.content.slice(prefix.length+4).split(/ +/)[1].toLowerCase();
+
+            let channelUrl = "";
+
+            switch (channel) {
+                case "p3":
+                    channelUrl = "http://drradio3-lh.akamaihd.net/i/p3_9@143506/master.m3u8"
+                    break;
+                default:
+                    channelUrl = "http://netvarp.kringvarp.fo:443/uvhm";
+            }
+
             const guildData = {
                 textChannel: message.channel,
                 voiceChannel: voiceChannel,
                 connection: null,
+                station: channelUrl,
                 volume: 5,
             };
 
@@ -39,7 +54,7 @@ module.exports = {
 
     play(message) {
         const guild = message.client.guildInstances.get(message.guild.id);
-        const dispatcher = guild.connection.play("http://netvarp.kringvarp.fo:443/uvhm")
+        const dispatcher = guild.connection.play(guild.station)
             .on("finish", () => console.log("Finished"))
             .on("error", error => console.error(error));
         dispatcher.setVolumeLogarithmic(guild.volume / 5);
