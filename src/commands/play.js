@@ -18,12 +18,9 @@ module.exports = {
 
             const channel = message.content.slice(prefix.length+4).split(/ +/)[1].toLowerCase();
 
-            let channelUrl = "http://netvarp.kringvarp.fo:443/uvhm";
+            let channelUrl = "";
 
             switch (channel) {
-                case "kvf":
-                    channelUrl = "http://netvarp.kringvarp.fo:443/uvhm";
-                    break;
                 case "p3":
                     channelUrl = "http://drradio3-lh.akamaihd.net/i/p3_9@143506/master.m3u8"
                     break;
