@@ -213,3 +213,6 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm
+.idea/discord-kvf.iml
+.idea/modules.xml
+.idea/vcs.xml
