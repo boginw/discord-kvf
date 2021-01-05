@@ -30,6 +30,9 @@ module.exports = {
                 case "p3":
                     channelUrl = "http://drradio3-lh.akamaihd.net/i/p3_9@143506/master.m3u8"
                     break;
+                case "lindin":
+                    channelUrl = "http://lindinhigh.stream.fo:8000/lindinhigh"
+                    break;
                 default:
                     channelUrl = "http://netvarp.kringvarp.fo:443/uvhm";
             }
