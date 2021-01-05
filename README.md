@@ -22,7 +22,7 @@
 
 ## Sjálvhýsan
 
-Í hesum parti verður greitt frá ein setur upp hendan bot til sjálvhýsan.
+Í hesum parti verður greitt frá hvussu ein setur upp hendan bot til sjálvhýsan.
 
 ### Fortreytir
 
