@@ -22,10 +22,12 @@ module.exports = {
             let channel = message.content.slice(prefix.length + this.name.length).split(/ +/);
             
             if (channel.length >= 2) {
-                channel = channel[1].toLowerCase();
+                channel = channel[1];
             } else {
                 channel = channel[0];
             }
+
+            channel = channel.toLowerCase();
             
             if (!channel.match(/^[0-9a-z]+$/)) return message.channel.send("Illegal channel name");
 
@@ -42,7 +44,7 @@ module.exports = {
             guilds.set(message.guild.id, guildData);
 
             try {
-                guildData.connection = await voiceChannel.join();
+                if (!guildData.connection) guildData.connection = await voiceChannel.join();
                 this.play(message);
             } catch (err) {
                 console.log(err);
@@ -70,6 +72,5 @@ module.exports = {
         if (!guild || !guild.connection || !guild.connection.dispatcher) return;
 
         guild.connection.dispatcher.end();
-        guild.voiceChannel.leave();
     }
 };
