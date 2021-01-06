@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { prefix } = require('../../config.json');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
             const guilds = message.client.guildInstances;
             const voiceChannel = message.member.voice.channel;
             
-            if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play KVF!");
+            if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play radio");
 
             const permissions = voiceChannel.permissionsFor(message.client.user);
 
@@ -16,26 +17,19 @@ module.exports = {
                 return message.channel.send("I need the permissions to join and speak in your voice channel!");
             }
 
-            let channel = message.content.slice(prefix.length+4).split(/ +/);
+            this.stopIfPlaying(message);
 
+            let channel = message.content.slice(prefix.length + this.name.length).split(/ +/);
+            
             if (channel.length >= 2) {
                 channel = channel[1].toLowerCase();
             } else {
                 channel = channel[0];
             }
+            
+            if (!channel.match(/^[0-9a-z]+$/)) return message.channel.send("Illegal channel name");
 
-            let channelUrl = "";
-
-            switch (channel) {
-                case "p3":
-                    channelUrl = "http://drradio3-lh.akamaihd.net/i/p3_9@143506/master.m3u8"
-                    break;
-                case "lindin":
-                    channelUrl = "http://lindinhigh.stream.fo:8000/lindinhigh"
-                    break;
-                default:
-                    channelUrl = "http://netvarp.kringvarp.fo:443/uvhm";
-            }
+            const channelUrl = fs.readFileSync(`./assets/channels/${channel}`, "utf8").trim();
 
             const guildData = {
                 textChannel: message.channel,
@@ -68,5 +62,14 @@ module.exports = {
             .on("error", error => console.error(error));
         dispatcher.setVolumeLogarithmic(guild.volume / 5);
         guild.textChannel.send(`Start playing`);
+    },
+
+    stopIfPlaying(message) {
+        const guild = message.client.guildInstances.get(message.guild.id);
+        
+        if (!guild || !guild.connection || !guild.connection.dispatcher) return;
+
+        guild.connection.dispatcher.end();
+        guild.voiceChannel.leave();
     }
 };
